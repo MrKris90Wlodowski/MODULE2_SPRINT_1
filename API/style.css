@@ -1,0 +1,96 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    font-size: 16px;
+    --cream: #dcd3d3;
+    --white: #ffffff;
+    --blue: #585fe3;
+    --mainFont: "Roboto", "san-serif"
+}
+
+body {
+    background-color: var(--cream);
+    width: 100%;
+    margin: 0 auto;
+    padding: 32px;
+}
+
+button {
+    background-color: var(--blue);
+    width: 120px;
+    height: 40px;
+    border: 1px solid black;
+    border-radius: 8px;
+    box-shadow: 0 0.25rem 0.25rem 0 rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    transition: background-color 1000ms ease;
+    font-weight: 600;
+}
+
+button:hover{
+    background-color: #1019d3;  
+}
+
+label {
+    font-weight: 500;
+    font-size: 24px;
+    font-style: italic;
+}
+
+#searchInput {
+    height: 32px;
+    width: 240px;
+    padding: 4px;
+    border: 2px solid black;
+    border-radius: 8px;
+}
+
+#formContainer {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 32px;
+}
+
+#buttonContainer {
+    margin-top: 32px;
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+}
+
+#usersContainer {
+    display: grid;
+    grid-template-columns: repeat(7,1fr);
+    gap: 32px;
+}
+
+.userContainer {
+    max-width: 120px;
+    max-height: 220px;
+    padding: 4px;
+    border-radius: 8px;
+    background-color: var(--white);
+    border: 2px solid black;
+}
+
+.userName {
+    margin: 24px 0;
+}
+
+.imageContainer {
+    width: 100%;
+    aspect-ratio: 1/1;
+    border-radius: 16px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.displayFlex {
+    display: flex;
+    justify-content: center;
+}

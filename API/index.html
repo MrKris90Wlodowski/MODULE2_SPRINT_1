@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Krzysztof Włodowski" />
+    <link rel="stylesheet" href="style.css"></link>
+    <title>Rick and Morty API</title>
+  </head>
+  <body>
+    <div id="formContainer">
+      <form>
+        <label for="searchInput">Filtry:</label>
+        <input
+          id="searchInput"
+          type="text"
+          placeholder="Wyszukaj po nazwie..."
+        />
+        <input id="aliveStatus" type="radio" name="status" />
+        <label for="aliveStatus">Żywy</label>
+        <input id="deadStatus" type="radio" name="status" />
+        <label for="deadStatus">Martwy</label>
+        <input id="unknownStatus" type="radio" name="status" />
+        <label for="unknownStatus">Nieznany</label>
+      </form>
+    </div>
+    <div id="usersContainer">
+      <!-- <div class="userContainer">
+        <div class="imageContainer"></div>
+        <p class="userName displayFlex">Al Bunndy</p>
+        <p class="userStatus">Status</p>
+        <p class="=userGender">Gender</p>
+      </div> -->
+    </div>
+    <div id="buttonContainer">
+        <button id="prevButton">PREV</button>
+        <button id="nextButton">NEXT</button>
+    </div>
+    <p id="errorMessage"></p>
+    <script src="script.js"></script>
+  </body>
+</html>
