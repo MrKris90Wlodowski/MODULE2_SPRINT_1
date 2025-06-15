@@ -5,25 +5,31 @@ const unknownStatus = document.getElementById("unknownStatus");
 const usersContainer = document.getElementById("usersContainer");
 const prevButton = document.getElementById("prevButton");
 const nextButton = document.getElementById("nextButton");
-const errorMessage = document.getElementById("errorMessage");
+// const errorMessage = document.getElementById("errorMessage");
 const formContainer = document.getElementById("formContainer");
+const noUsersMessage = document.getElementById("noUsersMessage");
 
 const API = "https://rickandmortyapi.com/api/character";
 
 let currentPage = 1;
 let maxPage;
 let statusUser = "alive";
+let tmieline;
 
 async function loadUsers() {
+    const searchValue = searchInput.value.trim().toLowerCase();
     usersContainer.innerHTML="";
+    noUsersMessage.classList.add("hiddenElement");
     try {
-    const response = await fetch(`${API}/?page=${currentPage}&status=${statusUser}`);
+    const response = await fetch(`${API}/?page=${currentPage}&status=${statusUser}&name=${searchValue}`);
     if (!response.ok) {
       throw new Error("FAILED TO FETCH USERS");
     }
     const dataUsers = await response.json();
-    maxPage = dataUsers.info.pages
+    maxPage = dataUsers.info.pages;
+    totalUsers = dataUsers.info.count;
     console.log(maxPage);
+    console.log(totalUsers);
     dataUsers.results.forEach((user) => {
       const newUser = document.createElement("div");
       newUser.classList.add("userContainer");
@@ -34,7 +40,6 @@ async function loadUsers() {
       userName.classList.add("userName", "displayFlex");
       userName.textContent=`${user.name}`;
       const userStatus = document.createElement("p");
-      userStatus.textContent=`Gender: ${user.gender}`;
       userStatus.classList.add("userStatus");
       userStatus.textContent=`Status: ${user.status}`
       const userGender = document.createElement("p");
@@ -47,7 +52,9 @@ async function loadUsers() {
       usersContainer.appendChild(newUser);
     });
   } catch (error) {
-    errorMessage.textContent = `FAILED TO LOAD USER :( ${error}`;
+    // errorMessage.textContent = `FAILED TO LOAD USER :( ${error}`;
+    console.error(error);
+    noUsersMessage.classList.remove("hiddenElement");
   }
 }
 
@@ -85,6 +92,14 @@ nextButton.addEventListener("click", () => {
     currentPage++;
     loadUsers();
   }
+});
+
+searchInput.addEventListener("input", () => {
+    clearTimeout(tmieline);
+    tmieline = setTimeout( () => {
+        currentPage = 1;
+        loadUsers();
+    },1000)
 });
 
 loadUsers();

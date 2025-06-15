@@ -92,7 +92,16 @@ label {
     background-position: center;
 }
 
+#noUsersMessage {
+    font-size: 32px;
+    font-weight: 900;
+}
+
 .displayFlex {
     display: flex;
     justify-content: center;
+}
+
+.hiddenElement {
+    display: none;
 }

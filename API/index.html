@@ -16,7 +16,7 @@
           type="text"
           placeholder="Wyszukaj po nazwie..."
         />
-        <input id="aliveStatus" data-status="alive" type="radio" name="status" />
+        <input id="aliveStatus" data-status="alive" type="radio" name="status" checked />
         <label for="aliveStatus" data-status="alive" >Żywy</label>
         <input id="deadStatus" data-status="dead" type="radio" name="status" />
         <label for="deadStatus" data-status="dead" >Martwy</label>
@@ -25,18 +25,13 @@
       </form>
     </div>
     <div id="usersContainer">
-      <!-- <div class="userContainer">
-        <div class="imageContainer"></div>
-        <p class="userName displayFlex">Al Bunndy</p>
-        <p class="userStatus">Status</p>
-        <p class="=userGender">Gender</p>
-      </div> -->
     </div>
+    <p id="noUsersMessage" class="displayFlex hiddenElement">Nie znaleziono postaci spełniających kryteria wyszukiwania.</p>
     <div id="buttonContainer">
         <button id="prevButton">PREV</button>
         <button id="nextButton">NEXT</button>
     </div>
-    <p id="errorMessage"></p>
+    <!-- <p id="errorMessage"></p> -->
     <script src="script.js"></script>
   </body>
 </html>
