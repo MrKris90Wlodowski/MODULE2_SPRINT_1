@@ -5,7 +5,6 @@ const unknownStatus = document.getElementById("unknownStatus");
 const usersContainer = document.getElementById("usersContainer");
 const prevButton = document.getElementById("prevButton");
 const nextButton = document.getElementById("nextButton");
-// const errorMessage = document.getElementById("errorMessage");
 const formContainer = document.getElementById("formContainer");
 const noUsersMessage = document.getElementById("noUsersMessage");
 
@@ -14,8 +13,6 @@ const nameUserInput = document.getElementById("nameUserInput");
 const speciesUserInput = document.getElementById("speciesUserInput");
 const statusInput = document.getElementById("statusInput");
 const addFormContainer = document.getElementById("addFormContainer");
-
-// const deleteButton = document.querySelectorAll(".buttonDelete");
 
 const API = "http://localhost:3000/users";
 
@@ -29,7 +26,6 @@ async function loadUsers() {
   usersContainer.innerHTML = "";
   noUsersMessage.classList.add("hiddenElement");
   try {
-    // const response = await fetch(`${API}/?_page=${currentPage}&status=${statusUser}&name=${searchValue}`);
     const response = await fetch(
       `${API}/?_page=${currentPage}&_limit=5&status=${statusUser}&q=${searchValue}`
     );
@@ -37,11 +33,12 @@ async function loadUsers() {
       throw new Error("FAILED TO FETCH USERS");
     }
     const totalUsers = response.headers.get("X-Total-Count");
+    if (Number(totalUsers) === 0) {
+      noUsersMessage.classList.remove("hiddenElement");
+    }
     maxPage = Math.ceil(totalUsers / 5);
     const dataUsers = await response.json();
-    // maxPage = dataUsers.info.pages;
     const totalRecords = dataUsers.length;
-    // console.log(maxPage);
     console.log(totalRecords);
     console.log(dataUsers);
     dataUsers.forEach((user) => {
@@ -69,11 +66,9 @@ async function loadUsers() {
       newUser.appendChild(userStatus);
       newUser.appendChild(userGender);
       newUser.appendChild(deleteButton);
-      // newUser.dataset.id = `${user.id}`;
       usersContainer.appendChild(newUser);
     });
   } catch (error) {
-    // errorMessage.textContent = `FAILED TO LOAD USER :( ${error}`;
     console.error(error);
     noUsersMessage.classList.remove("hiddenElement");
   }
@@ -143,8 +138,6 @@ formContainer.addEventListener("change", (event) => {
   loadUsers();
 });
 
-// deleteButton.addEventListener("click", deleteUser);
-
 prevButton.addEventListener("click", () => {
   if (currentPage === 1) {
     prevButton.disabled = true;
@@ -155,6 +148,7 @@ prevButton.addEventListener("click", () => {
     loadUsers();
   }
 });
+
 nextButton.addEventListener("click", () => {
   if (currentPage === maxPage) {
     nextButton.disabled = true;

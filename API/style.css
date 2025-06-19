@@ -85,7 +85,6 @@ label {
 .imageContainer {
     width: 100%;
     height: 100px;
-    /* aspect-ratio: 1/1; */
     border-radius: 8px;
     background-size: cover;
     background-repeat: no-repeat;

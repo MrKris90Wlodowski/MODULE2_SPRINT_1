@@ -5,7 +5,6 @@ const unknownStatus = document.getElementById("unknownStatus");
 const usersContainer = document.getElementById("usersContainer");
 const prevButton = document.getElementById("prevButton");
 const nextButton = document.getElementById("nextButton");
-// const errorMessage = document.getElementById("errorMessage");
 const formContainer = document.getElementById("formContainer");
 const noUsersMessage = document.getElementById("noUsersMessage");
 
@@ -55,7 +54,6 @@ async function loadUsers() {
       usersContainer.appendChild(newUser);
     });
   } catch (error) {
-    // errorMessage.textContent = `FAILED TO LOAD USER :( ${error}`;
     console.error(error);
     noUsersMessage.classList.remove("hiddenElement");
   }
