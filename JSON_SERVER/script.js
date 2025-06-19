@@ -31,7 +31,7 @@ async function loadUsers() {
   try {
     // const response = await fetch(`${API}/?_page=${currentPage}&status=${statusUser}&name=${searchValue}`);
     const response = await fetch(
-      `${API}/?_page=${currentPage}&_limit=5&status=${statusUser}`
+      `${API}/?_page=${currentPage}&_limit=5&status=${statusUser}&q=${searchValue}`
     );
     if (!response.ok) {
       throw new Error("FAILED TO FETCH USERS");

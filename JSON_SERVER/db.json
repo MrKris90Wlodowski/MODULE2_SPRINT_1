@@ -141,39 +141,11 @@
       "image": "https://rickandmortyapi.com/api/character/avatar/20.jpeg"
     },
     {
-      "name": "Jaca Muran",
+      "name": "Jacek Murański",
       "status": "Alive",
-      "species": "alien",
-      "image": "http://rickandmortyapi.com/api/character/avatar/3.jpeg",
+      "species": "Human",
+      "image": "http://rickandmortyapi.com/api/character/avatar/87.jpeg",
       "id": 21
-    },
-    {
-      "name": "Marcin Najman",
-      "status": "Alive",
-      "species": "alien",
-      "image": "http://rickandmortyapi.com/api/character/avatar/2.jpeg",
-      "id": 23
-    },
-    {
-      "name": "Zombie",
-      "status": "Dead",
-      "species": "trup",
-      "image": "http://rickandmortyapi.com/api/character/avatar/NaN.jpeg",
-      "id": 25
-    },
-    {
-      "name": "Wuj Władek",
-      "status": "Dead",
-      "species": "alien",
-      "image": "http://rickandmortyapi.com/api/character/avatar/2.jpeg",
-      "id": 26
-    },
-    {
-      "name": "borek",
-      "status": "Alive",
-      "species": "alien",
-      "image": "http://rickandmortyapi.com/api/character/avatar/212.jpeg",
-      "id": 27
     }
   ]
 }
