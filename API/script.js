@@ -22,14 +22,17 @@ async function loadUsers() {
     noUsersMessage.classList.add("hiddenElement");
     try {
     const response = await fetch(`${API}/?page=${currentPage}&status=${statusUser}&name=${searchValue}`);
+    const responseUsers20 = await fetch(`${API}/?page=1`);
     if (!response.ok) {
       throw new Error("FAILED TO FETCH USERS");
     }
     const dataUsers = await response.json();
+    const dataUsers20 = await responseUsers20.json();
     maxPage = dataUsers.info.pages;
     totalUsers = dataUsers.info.count;
     console.log(maxPage);
     console.log(totalUsers);
+    console.log(dataUsers20);
     dataUsers.results.forEach((user) => {
       const newUser = document.createElement("div");
       newUser.classList.add("userContainer");
