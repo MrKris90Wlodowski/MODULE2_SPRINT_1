@@ -1,0 +1,151 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    font-size: 12px;
+    --cream: #dcd3d3;
+    --white: #ffffff;
+    --blue: #585fe3;
+    --mainFont: "Roboto", "san-serif"
+}
+
+body {
+    background-color: var(--cream);
+    width: 100%;
+    margin: 0 auto;
+    padding: 32px;
+}
+
+button {
+    background-color: var(--blue);
+    width: 120px;
+    height: 40px;
+    border: 1px solid black;
+    border-radius: 8px;
+    box-shadow: 0 0.25rem 0.25rem 0 rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    transition: background-color 1000ms ease;
+    font-weight: 600;
+}
+
+button:hover{
+    background-color: #1019d3;  
+}
+
+label {
+    font-weight: 500;
+    font-size: 24px;
+    font-style: italic;
+}
+
+#searchInput {
+    height: 32px;
+    width: 240px;
+    padding: 4px;
+    border: 2px solid black;
+    border-radius: 8px;
+}
+
+#formContainer {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 32px;
+}
+
+#buttonContainer {
+    margin: 32px 0;
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+}
+
+#usersContainer {
+    display: flex;
+    gap: 16px;  
+}
+
+.userContainer {
+    min-width: 140px;
+    height: auto;
+    padding: 4px;
+    border-radius: 8px;
+    background-color: var(--white);
+    border: 2px solid black;
+}
+
+.userName {
+    margin: 8px 0;
+}
+
+.imageContainer {
+    width: 100%;
+    height: 100px;
+    /* aspect-ratio: 1/1; */
+    border-radius: 8px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#noUsersMessage {
+    font-size: 32px;
+    font-weight: 900;
+}
+
+.displayFlex {
+    display: flex;
+    justify-content: center;
+}
+
+.hiddenElement {
+    display: none;
+}
+
+.buttonDelete:hover {
+    background-color: #a89898;
+}
+
+.buttonDelete {
+    margin: 8px 0 4px;
+    padding: 6px 12px;
+    background-color: var(--cream);
+    width: 100%;
+    /* width: 120px; */
+    height: 36px;
+    border: 1px solid black;
+    border-radius: 8px;
+    box-shadow: 0 0.25rem 0.25rem 0 rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    transition: background-color 1000ms ease;
+    font-weight: 600;
+}
+
+#addFormContainer {
+    padding: 8px;
+    min-width: 452px;
+    height: auto;
+    border-radius: 8px;
+    border: 2px solid black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--white);
+}
+
+.formElementStyle {
+    height: 32px;
+    width: 100%;
+    padding: 4px;
+    margin: 2px 0;
+    border: 2px solid black;
+    border-radius: 8px;
+}
+
+#paragraphForm {
+    font-weight: 900;
+    margin: 8px 0;
+    font-size: 24px;
+}

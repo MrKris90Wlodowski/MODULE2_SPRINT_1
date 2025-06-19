@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Krzysztof Włodowski" />
+    <link rel="stylesheet" href="style.css"></link>
+    <title>Rick and Morty API</title>
+  </head>
+  <body>
+    <div id="formContainer">
+      <form>
+        <label for="searchInput">Filtry:</label>
+        <input
+          id="searchInput"
+          type="text"
+          placeholder="Wyszukaj po nazwie..."
+        />
+        <input id="aliveStatus" data-status="Alive" type="radio" name="status" checked />
+        <label for="aliveStatus" data-status="Alive" >Żywy</label>
+        <input id="deadStatus" data-status="Dead" type="radio" name="status" />
+        <label for="deadStatus" data-status="Dead" >Martwy</label>
+        <input id="unknownStatus" data-status="unknown" type="radio" name="status" />
+        <label for="unknownStatus" data-status="unknown" >Nieznany</label>
+      </form>
+    </div>
+    <div id="usersContainer" class="displayFlex">
+    </div>
+    <p id="noUsersMessage" class="displayFlex hiddenElement">Nie znaleziono postaci spełniających kryteria wyszukiwania.</p>
+    <div id="buttonContainer">
+        <button id="prevButton">PREV</button>
+        <button id="nextButton">NEXT</button>
+    </div>
+    <div class="displayFlex">
+    <form id="addFormContainer">
+      <p id="paragraphForm">Stwórz postać</p>
+      <input id="nameUser" type="text" placeholder="Nazwa postaci" class="formElementStyle"/>
+      <select class="formElementStyle">
+        <option value="Alive">Żywy</option>
+        <option value="Dead">Martwy</option>
+        <option value="unknown">Nieznany</option>
+      </select>
+      <input id="speciesUser" type="text" placeholder="Rasa" class="formElementStyle"/>
+      <button id="createUserButton" class="formElementStyle">Stwórz</button>
+    </form>
+    </div>
+    <!-- <p id="errorMessage"></p> -->
+    <script src="script.js"></script>
+  </body>
+</html>
