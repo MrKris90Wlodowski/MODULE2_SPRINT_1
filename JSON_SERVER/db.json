@@ -148,25 +148,11 @@
       "id": 21
     },
     {
-      "name": "Jola Muran",
-      "status": "Alive",
-      "species": "alien",
-      "image": "http://rickandmortyapi.com/api/character/avatar/3.jpeg",
-      "id": 22
-    },
-    {
       "name": "Marcin Najman",
       "status": "Alive",
       "species": "alien",
       "image": "http://rickandmortyapi.com/api/character/avatar/2.jpeg",
       "id": 23
-    },
-    {
-      "name": "Krzyś Stanowski",
-      "status": "Alive",
-      "species": "Human",
-      "image": "http://rickandmortyapi.com/api/character/avatar/NaN.jpeg",
-      "id": 24
     },
     {
       "name": "Zombie",

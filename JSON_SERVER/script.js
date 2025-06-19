@@ -15,6 +15,8 @@ const speciesUserInput = document.getElementById("speciesUserInput");
 const statusInput = document.getElementById("statusInput");
 const addFormContainer = document.getElementById("addFormContainer");
 
+// const deleteButton = document.querySelectorAll(".buttonDelete");
+
 const API = "http://localhost:3000/users";
 
 let currentPage = 1;
@@ -60,11 +62,14 @@ async function loadUsers() {
       const deleteButton = document.createElement("button");
       deleteButton.classList.add("buttonDelete");
       deleteButton.textContent = "DELETE";
+      deleteButton.dataset.id=`${user.id}`;
+      deleteButton.addEventListener("click", deleteUser);
       newUser.appendChild(userImage);
       newUser.appendChild(userName);
       newUser.appendChild(userStatus);
       newUser.appendChild(userGender);
       newUser.appendChild(deleteButton);
+      // newUser.dataset.id = `${user.id}`;
       usersContainer.appendChild(newUser);
     });
   } catch (error) {
@@ -79,27 +84,46 @@ async function addUser(event) {
   const nameUserInputValue = nameUserInput.value.trim();
   const speciesUserInputValue = speciesUserInput.value.trim();
   const statusInputValue = statusInput.value;
-  const randomNumber = Math.floor(Math.random() * 826 +1);
+  const randomNumber = Math.floor(Math.random() * 826 + 1);
 
   try {
     if (nameUserInputValue !== 0 && speciesUserInputValue !== 0) {
-    const response = await fetch(API, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        name: nameUserInputValue,
-        status: statusInputValue,
-        species: speciesUserInputValue,
-        image: `http://rickandmortyapi.com/api/character/avatar/${randomNumber}.jpeg`,
-      }),
-    });
+      const response = await fetch(API, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: nameUserInputValue,
+          status: statusInputValue,
+          species: speciesUserInputValue,
+          image: `http://rickandmortyapi.com/api/character/avatar/${randomNumber}.jpeg`,
+        }),
+      });
+      if (!response.ok) {
+        throw new Error("Failed to fetch users");
+      }
+      addFormContainer.reset();
+      currentPage = 1;
+      loadUsers();
+    }
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+async function deleteUser(event) {
+  const eventDelete = event.target.classList.contains("buttonDelete");
+  if (!eventDelete) {
+    return;
+  }
+  const eventID = event.target.dataset.id;
+  try {
+    const response = await fetch(`${API}/${eventID}`, { method: "DELETE" });
     if (!response.ok) {
       throw new Error("Failed to fetch users");
     }
-    addFormContainer.reset();
     currentPage = 1;
     loadUsers();
-  }} catch (error) {
+  } catch (error) {
     console.error(error);
   }
 }
@@ -118,6 +142,8 @@ formContainer.addEventListener("change", (event) => {
   currentPage = 1;
   loadUsers();
 });
+
+// deleteButton.addEventListener("click", deleteUser);
 
 prevButton.addEventListener("click", () => {
   if (currentPage === 1) {
