@@ -26,12 +26,10 @@ async function loadUsers() {
       throw new Error("FAILED TO FETCH USERS");
     }
     const dataUsers = await response.json();
-    const dataUsers20 = await responseUsers20.json();
     maxPage = dataUsers.info.pages;
     totalUsers = dataUsers.info.count;
     console.log(maxPage);
     console.log(totalUsers);
-    console.log(dataUsers20);
     dataUsers.results.forEach((user) => {
       const newUser = document.createElement("div");
       newUser.classList.add("userContainer");
@@ -78,7 +76,6 @@ prevButton.addEventListener("click", () => {
   if (currentPage === 1) {
     prevButton.disabled = true;
   } else {
-    usersContainer.innerHTML = "";
     nextButton.disabled = false;
     currentPage--;
     loadUsers();
@@ -88,7 +85,6 @@ nextButton.addEventListener("click", () => {
   if (currentPage === maxPage) {
     nextButton.disabled = true;
   } else {
-    usersContainer.innerHTML = "";
     prevButton.disabled = false;
     currentPage++;
     loadUsers();

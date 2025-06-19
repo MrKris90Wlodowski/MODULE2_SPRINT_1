@@ -38,9 +38,6 @@ async function loadUsers() {
     }
     maxPage = Math.ceil(totalUsers / 5);
     const dataUsers = await response.json();
-    const totalRecords = dataUsers.length;
-    console.log(totalRecords);
-    console.log(dataUsers);
     dataUsers.forEach((user) => {
       const newUser = document.createElement("div");
       newUser.classList.add("userContainer");
@@ -67,10 +64,11 @@ async function loadUsers() {
       newUser.appendChild(userGender);
       newUser.appendChild(deleteButton);
       usersContainer.appendChild(newUser);
+      prevButton.disabled = false;
+      nextButton.disabled = false;
     });
   } catch (error) {
     console.error(error);
-    noUsersMessage.classList.remove("hiddenElement");
   }
 }
 
@@ -80,7 +78,6 @@ async function addUser(event) {
   const speciesUserInputValue = speciesUserInput.value.trim();
   const statusInputValue = statusInput.value;
   const randomNumber = Math.floor(Math.random() * 826 + 1);
-
   try {
     if (nameUserInputValue !== 0 && speciesUserInputValue !== 0) {
       const response = await fetch(API, {
@@ -142,7 +139,6 @@ prevButton.addEventListener("click", () => {
   if (currentPage === 1) {
     prevButton.disabled = true;
   } else {
-    usersContainer.innerHTML = "";
     nextButton.disabled = false;
     currentPage--;
     loadUsers();
@@ -153,7 +149,6 @@ nextButton.addEventListener("click", () => {
   if (currentPage === maxPage) {
     nextButton.disabled = true;
   } else {
-    usersContainer.innerHTML = "";
     prevButton.disabled = false;
     currentPage++;
     loadUsers();
